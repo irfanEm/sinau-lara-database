@@ -1,0 +1,5 @@
+DB:Facade
+Debug Query = DB::listen()
+CRUD SQL : DB::insert(sql, array), DB::update(sql, array), DB::delete(sql, array), DB::select(sql, array), DB::statement(sql, array), DB::unprepared(sql)
+DB::transaction
+Database Commands = php artisan db, php artisan db:table, php artisan db:show, php artisan db:monitor, php artisan db:seed, php artisan db:wipe.
