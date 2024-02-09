@@ -3,3 +3,8 @@ Debug Query = DB::listen()
 CRUD SQL : DB::insert(sql, array), DB::update(sql, array), DB::delete(sql, array), DB::select(sql, array), DB::statement(sql, array), DB::unprepared(sql)
 DB::transaction
 Database Commands = php artisan db, php artisan db:table, php artisan db:show, php artisan db:monitor, php artisan db:seed, php artisan db:wipe.
+Query Builder = DB::table(name)
+- Query Builder Insert = insert(), insertGetId(), insertOrIgnore()
+- Query Builder Select = select(columns), get(columns), first(columns), pluck(column)
+- Query Builder Where = where(column, iperator, value), where([condition1, condition2]), where(callback(Builder)), orWhere(column, operator, value), orWhere(callback(Builder)), whereNot(callback(Builder)), whereBetween(column, [value1, value2]), whereNotBetween(column, [value1, value2]), whereIn(column, [array]), whereNotIn(column, [array]), whereNull(column), whereNotNull(columns), whereDate(clumn, value), whereMonth(column, value), whereDay(column, value), whereYear(column, value), whereTime(column, value)
+- Query Builder Update = update(array), 
