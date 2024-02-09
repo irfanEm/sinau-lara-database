@@ -151,5 +151,43 @@ class QueryBuilderInsertTest extends TestCase
             Log::info(json_encode($hasil));
         });
     }
+
+    public function testUpsert()
+    {
+        DB::table('categories')->updateOrInsert([
+            'id' => 'PULSA'
+        ],[
+            'name' => 'Pulsa Reguler',
+            'description' => 'Pulsa biasa untuk telfon / sms.',
+            'created_at' => '2024-02-04 00:00:00'
+        ]);
+
+        $koleksi = DB::table('categories')->where('id', '=', 'PULSA')->get();
+        self::assertCount(1, $koleksi);
+        $koleksi->each(function($hasil){
+            Log::info(json_encode($hasil));
+        });
+    }
+
+    public function testIncrement()
+    {
+        DB::table('counters')->where('id', '=', 'sample')->increment('counter', 1);
+
+        $koleksi = DB::table('counters')->where('id', '=', 'sample')->get();
+
+        self::assertCount(1, $koleksi);
+        $koleksi->each(function($hasil){
+            Log::info(json_encode($hasil));
+        });
+    }
+
+    public function testQueryDelete()
+    {
+        $this->testQueryBuilderWhere();
+
+        DB::table('categories')->where('id', '=', 'TTP')->delete();
+        $koleksi = DB::table('categories')->where('id', '=', 'TTP')->get();
+        self::assertCount(0, $koleksi);
+    }
 }
     
