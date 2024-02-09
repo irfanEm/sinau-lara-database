@@ -189,5 +189,16 @@ class QueryBuilderInsertTest extends TestCase
         $koleksi = DB::table('categories')->where('id', '=', 'TTP')->get();
         self::assertCount(0, $koleksi);
     }
+
+    public function insertProducts()
+    {
+        $this->testQueryBuilderWhere();
+
+        DB::table('products')->insert([
+            'id' => '1',
+            'name' => 'Iphone 14 Pro',
+            'category_id' => ''
+        ])
+    }
 }
     
