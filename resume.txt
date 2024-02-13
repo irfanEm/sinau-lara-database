@@ -24,4 +24,4 @@ Query Builder = DB::table(name)
 - Query Builder Locking = lockForUpdate().
 - Pagination = paginate(), total(), currentPage(), lastPage(), perPage().
 - Iterasi Per Page = 
-- Cursor Pagination = 
+- Cursor Pagination = cursorePaginate().
