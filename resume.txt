@@ -25,3 +25,7 @@ Query Builder = DB::table(name)
 - Pagination = paginate(), total(), currentPage(), lastPage(), perPage().
 - Iterasi Per Page = 
 - Cursor Pagination = cursorePaginate().
+- Database Migration = buat database migration, php artisan make:migration, php artisan migrate:status, php artisan migrate, tipe data di migration, 
+- Edit table yang sudah di migrate dimigration.
+- Rollback Database Migration = php artisan migrate:rollback --step=jumlah.
+- Database Seeding = php artisan make:seeder NamaSeeder, php artisan db:seed --class=ClassSeeder, Memanggil seeder dari unit test

@@ -2,18 +2,21 @@
 
 namespace Tests\Feature;
 
-use Illuminate\Database\Query\Builder;
 use Tests\TestCase;
 use Illuminate\Support\Facades\DB;
+use Illuminate\Support\Facades\Log;
+use Database\Seeders\CategorySeeder;
+use Database\Seeders\CountSeeder;
+use Illuminate\Database\Query\Builder;
 use Illuminate\Foundation\Testing\WithFaker;
 use Illuminate\Foundation\Testing\RefreshDatabase;
-use Illuminate\Support\Facades\Log;
 
 class QueryBuilderInsertTest extends TestCase
 {
     protected function setUp(): void
     {
         parent::setUp();
+        DB::delete("DELETE from counters");
         DB::delete("DELETE from products");
         DB::delete("DELETE FROM categories");
     }
@@ -47,26 +50,12 @@ class QueryBuilderInsertTest extends TestCase
 
     public function testQueryBuilderWhere()
     {
-        DB::table('categories')->insert([
-            'id' => 'CIKI', 'name' => 'Polt', 'description' => 'Kacang polong dibalur trigu', 'created_at' => '2024-02-05 00:00:00'
-        ]);
-        DB::table('categories')->insert([
-            'id' => 'ES', 'name' => 'Marimas', 'description' => 'Es Marimas dengan es batu', 'created_at' => '2024-02-05 00:01:00'
-        ]);
-        DB::table('categories')->insert([
-            'id' => 'GORENG', 'name' => 'Cireng', 'description' => 'Cireng isi ayam suir', 'created_at' => '2024-02-05 00:02:00'
-        ]);
-        DB::table('categories')->insert([
-            'id' => 'KUAH', 'name' => 'Seblak', 'description' => 'Seblak dengan berbagai macam toping', 'created_at' => '2024-02-05 00:03:00'
-        ]);
-        DB::table('categories')->insert([
-            'id' => 'TTP', 'name' => 'Makaroni', 'description' => 'Makaroni goreng berbagai varian', 'created_at' => '2024-02-05 00:04:00'
-        ]);
+        $this->seed(CategorySeeder::class);
     }
 
     public function testWhere()
     {
-        $this->testQueryBuilderWhere();
+        $this->seed(CategorySeeder::class);
 
         $koleksi = DB::table('categories')->where(function(Builder $builder){
             $builder->where('id', '=', 'ES');
@@ -82,9 +71,9 @@ class QueryBuilderInsertTest extends TestCase
 
     public function testWhereBetween()
     {
-        $this->testQueryBuilderWhere();
+        $this->seed(CategorySeeder::class);
 
-        $koleksi = DB::table('categories')->whereBetween('created_at', ['2024-02-05 00:00:00', '2024-02-05 00:02:00'])->get();
+        $koleksi = DB::table('categories')->whereBetween('created_at', ['2024-02-16 10:26:40', '2024-02-16 10:26:42'])->get();
 
         self::assertCount(3, $koleksi);
         $koleksi->each(function($hasil){
@@ -94,7 +83,7 @@ class QueryBuilderInsertTest extends TestCase
 
     public function testWhereIn()
     {
-        $this->testQueryBuilderWhere();
+        $this->seed(CategorySeeder::class);
 
         $koleksi = DB::table('categories')->whereIn('id', ['CIKI', 'ES'])->get();
 
@@ -106,7 +95,7 @@ class QueryBuilderInsertTest extends TestCase
 
     public function testWhereNotNull()
     {
-        $this->testQueryBuilderWhere();
+        $this->seed(CategorySeeder::class);
 
         $koleksi = DB::table('categories')->whereNotNull('description')->get();
 
@@ -118,7 +107,7 @@ class QueryBuilderInsertTest extends TestCase
 
     public function testWhereNull()
     {
-        $this->testQueryBuilderWhere();
+        $this->seed(CategorySeeder::class);
 
         $koleksi = DB::table('categories')->whereNull('description')->get();
 
@@ -130,7 +119,7 @@ class QueryBuilderInsertTest extends TestCase
 
     public function testWhereDate()
     {
-        $this->testQueryBuilderWhere();
+        $this->seed(CategorySeeder::class);
 
         $koleksi = DB::table('categories')->whereDate('created_at', '2024-02-05')->get();
 
@@ -142,7 +131,7 @@ class QueryBuilderInsertTest extends TestCase
 
     public function testQueryUpdate()
     {
-        $this->testQueryBuilderWhere();
+        $this->seed(CategorySeeder::class);
 
         DB::table('categories')->where('id', '=', 'CIKI')->update(['name' => 'Komo']);
         $koleksi = DB::table('categories')->where('id', '=', 'CIKI')->get();
@@ -172,7 +161,7 @@ class QueryBuilderInsertTest extends TestCase
 
     public function testIncrement()
     {
-        DB::table('counters')->where('id', '=', 'sample')->increment('counter', 1);
+        $this->seed(CountSeeder::class);
 
         $koleksi = DB::table('counters')->where('id', '=', 'sample')->get();
 
@@ -184,7 +173,7 @@ class QueryBuilderInsertTest extends TestCase
 
     public function testQueryDelete()
     {
-        $this->testQueryBuilderWhere();
+        $this->seed(CategorySeeder::class);
 
         DB::table('categories')->where('id', '=', 'TTP')->delete();
         $koleksi = DB::table('categories')->where('id', '=', 'TTP')->get();
@@ -193,7 +182,7 @@ class QueryBuilderInsertTest extends TestCase
 
     public function insertProducts()
     {
-        $this->testQueryBuilderWhere();
+        $this->seed(CategorySeeder::class);
 
         DB::table('products')->insert([
             'id' => '1',
@@ -272,7 +261,7 @@ class QueryBuilderInsertTest extends TestCase
 
     public function testPagging2()
     {
-        $this->testQueryBuilderWhere();
+        $this->seed(CategorySeeder::class);
 
         $koleksi = DB::table('categories')
         ->skip(2)
