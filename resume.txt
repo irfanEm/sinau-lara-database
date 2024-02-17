@@ -1,6 +1,9 @@
+RESUME.
+Konfigurasi Database = config/database.php
+Environment Variable.
 DB:Facade
 Debug Query = DB::listen()
-CRUD SQL : DB::insert(sql, array), DB::update(sql, array), DB::delete(sql, array), DB::select(sql, array), DB::statement(sql, array), DB::unprepared(sql)
+CRUD SQL : DB::insert(sql, array):bool, DB::update(sql, array):int, DB::delete(sql, array):int, DB::select(sql, array):array, DB::statement(sql, array):bool, DB::unprepared(sql):bool
 DB::transaction
 Database Commands = php artisan db, php artisan db:table, php artisan db:show, php artisan db:monitor, php artisan db:seed, php artisan db:wipe.
 Query Builder = DB::table(name)
