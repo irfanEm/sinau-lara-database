@@ -3,28 +3,11 @@ Konfigurasi Database = config/database.php
 Environment Variable.
 DB:Facade
 Debug Query = DB::listen()
-- 19:09 CRUD SQL : 
-    DB::insert(sql, array):bool, 
-    DB::update(sql, array):int, 
-    DB::delete(sql, array):int, 
-    DB::select(sql, array):array, 
-    DB::statement(sql, array):bool, 
-    DB::unprepared(sql):bool
-- 32:20 DB::transaction = 
-    DB::transaction(function(){ //kodemu });
-- 40:50 Database Commands = 
-    php artisan db(akses terminal database)
-    php artisan db:table(melihat semua table database)
-    php artisan db:show(melihat semua informasi Database)
-    php artisan db:monitor(monitor jumlah koneksi database)
-    php artisan db:seed(tambah data seed)
-    php artisan db:wipe(hapus all table database)
-- 43:35 Query Builder = 
-    DB::table(name)
-- 45:30 Query Builder Insert = 
-    insert(), 
-    insertGetId(), 
-    insertOrIgnore()
+CRUD SQL : DB::insert(sql, array):bool, DB::update(sql, array):int, DB::delete(sql, array):int, DB::select(sql, array):array, DB::statement(sql, array):bool, DB::unprepared(sql):bool
+DB::transaction
+Database Commands = php artisan db, php artisan db:table, php artisan db:show, php artisan db:monitor, php artisan db:seed, php artisan db:wipe.
+Query Builder = DB::table(name)
+- Query Builder Insert = insert(), insertGetId(), insertOrIgnore()
 - Query Builder Select = select(columns), get(columns), first(columns), pluck(column)
 - Query Builder Where = where(column, iperator, value), where([condition1, condition2]), where(callback(Builder)), orWhere(column, operator, value), orWhere(callback(Builder)), whereNot(callback(Builder)), whereBetween(column, [value1, value2]), whereNotBetween(column, [value1, value2]), whereIn(column, [array]), whereNotIn(column, [array]), whereNull(column), whereNotNull(columns), whereDate(clumn, value), whereMonth(column, value), whereDay(column, value), whereYear(column, value), whereTime(column, value)
 - Query Builder Update = update(array),
@@ -43,9 +26,9 @@ Debug Query = DB::listen()
 - Having = having().
 - Query Builder Locking = lockForUpdate().
 - Pagination = paginate(), total(), currentPage(), lastPage(), perPage().
-- Iterasi Per Page = 
+- Iterasi Per Page =
 - Cursor Pagination = cursorePaginate().
-- Database Migration = buat database migration, php artisan make:migration, php artisan migrate:status, php artisan migrate, tipe data di migration, 
+- Database Migration = buat database migration, php artisan make:migration, php artisan migrate:status, php artisan migrate, tipe data di migration,
 - Edit table yang sudah di migrate dimigration.
 - Rollback Database Migration = php artisan migrate:rollback --step=jumlah.
 - Database Seeding = php artisan make:seeder NamaSeeder, php artisan db:seed --class=ClassSeeder, Memanggil seeder dari unit test
