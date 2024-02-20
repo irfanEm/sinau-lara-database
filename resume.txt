@@ -69,9 +69,12 @@ Query Builder =
 - 01:34:10 Query Builder Paging =
     take(number),
     skip(number)
-- Chunk Results = chunk()
-- Lazy Result = lazy().
-- Cursor = cursor().
+- 01:36:40 Chunk Results =
+    chunk()
+- 01:43:45 Lazy Result =
+    lazy().
+- 01:49:35 Cursor =
+    cursor().
 - Query Builder Aggregates = count(column) , min(column), max(column), avg(column), sum(column).
 - Query Builder Raw = raw()
 - Query Builder Grouping = groupBy().

@@ -326,5 +326,55 @@ class QueryBuilderTest2 extends TestCase
         });
     }
 
+    public function testPagination()
+    {
+        $this->testInsertCategories();
 
+        $kolek = DB::table("categories")->skip(2)->take(2)->get();
+        self::assertCount(2, $kolek);
+        $kolek->each(function($item) {
+            Log::info(json_encode($item));
+        });
+    }
+
+    public function testInsertBanyakCategories()
+    {
+        for($i=1; $i<=100; $i++)
+        {
+            DB::table('categories')
+                ->insert([
+                    "id" => "ID$i",
+                    "name" => "name$i",
+                    "created_at" => "2024-02-21 00:00:00"
+                ]);
+        }
+    }
+
+    public function testChunk()
+    {
+        $this->testInsertBanyakCategories();
+
+        DB::table("categories")
+                ->orderBy("id")
+                ->chunk(10, function($kolek){
+                    self::assertNotNull($kolek);
+                    Log::info("Awal Chunk");
+                    $kolek->each(function($item) {
+                        Log::info(json_encode($item));
+                    });
+                    Log::info(json_encode("Akhir Chunk"));
+                });
+    }
+
+    public function testLazy()
+    {
+        $this->testInsertBanyakCategories();
+
+        $lazy = DB::table("categories")->orderBy("id")->lazy(10)->take(5);
+        self::assertNotNull($lazy);
+
+        $lazy->each(function($item) {
+            Log::info(json_encode($item));
+        });
+    }
 }
