@@ -2,70 +2,73 @@ RESUME.
 Konfigurasi Database = config/database.php
 Environment Variable.
 DB:Facade
-Debug Query = 
+Debug Query =
     DB::listen()
-CRUD SQL : 
-    DB::insert(sql, array):bool, 
-    DB::update(sql, array):int, 
-    DB::delete(sql, array):int, 
-    DB::select(sql, array):array, 
-    DB::statement(sql, array):bool, 
+CRUD SQL :
+    DB::insert(sql, array):bool,
+    DB::update(sql, array):int,
+    DB::delete(sql, array):int,
+    DB::select(sql, array):array,
+    DB::statement(sql, array):bool,
     DB::unprepared(sql):bool
-DB::transaction = 
+DB::transaction =
     DB::transaction(function(){ //code })
-Database Commands = 
+Database Commands =
     php artisan db(untuk )
     php artisan db:table(untuk )
     php artisan db:show(untuk )
     php artisan db:monitor(untuk )
     php artisan db:seed(untuk )
     php artisan db:wipe(untuk )
-Query Builder = 
+Query Builder =
     DB::table(name)
-- 45:30 Query Builder Insert = 
+- 45:30 Query Builder Insert =
     insert()-> insert data
     insertGetId()-> insert data dan mendapatkan Id
     insertOrIgnore()-> insert data jika belum ada dan ignore jika sudah ada
-- 51:20 Query Builder Select = 
-    select(columns), 
-    get(columns), 
-    first(columns), 
+- 51:20 Query Builder Select =
+    select(columns),
+    get(columns),
+    first(columns),
     pluck(column)
-- 56:00 Query Builder Where = 
-    where(column, iperator, value), 
-    where([condition1, condition2]), 
-    where(callback(Builder)), 
-    orWhere(column, operator, value), 
-    orWhere(callback(Builder)), 
-    whereNot(callback(Builder)), 
-    whereBetween(column, [value1, value2]), 
-    whereNotBetween(column, [value1, value2]), 
-    whereIn(column, [array]), 
-    whereNotIn(column, [array]), 
-    whereNull(column), 
-    whereNotNull(columns), 
-    whereDate(clumn, value), 
-    whereMonth(column, value), 
-    whereDay(column, value), 
-    whereYear(column, value), 
+- 56:00 Query Builder Where =
+    where(column, iperator, value),
+    where([condition1, condition2]),
+    where(callback(Builder)),
+    orWhere(column, operator, value),
+    orWhere(callback(Builder)),
+    whereNot(callback(Builder)),
+    whereBetween(column, [value1, value2]),
+    whereNotBetween(column, [value1, value2]),
+    whereIn(column, [array]),
+    whereNotIn(column, [array]),
+    whereNull(column),
+    whereNotNull(columns),
+    whereDate(clumn, value),
+    whereMonth(column, value),
+    whereDay(column, value),
+    whereYear(column, value),
     whereTime(column, value)
-- 01:10:35 Query Builder Update = 
+- 01:10:35 Query Builder Update =
     update(array),
-- 01:13:20 Upsert(Update or Insert) = 
+- 01:13:20 Upsert(Update or Insert) =
     updateOrInsert(attributes, values)
-- 01:16:40 Increment & Decrement =  
-    increment(column, increment),    
+- 01:16:40 Increment & Decrement =
+    increment(column, increment),
     decrement(column, decrement)
-- 01:21:20 Query Builder Delete = 
-    delete(), 
+- 01:21:20 Query Builder Delete =
+    delete(),
     truncate().
-- 01:22:55 Query Builder Join = 
-    join(table, column, operator, ref_column), 
-    leftJoin(table, column, operator, ref_column), 
-    rightJoin(table, column, operator, ref_column), 
+- 01:22:55 Query Builder Join =
+    join(table, column, operator, ref_column),
+    leftJoin(table, column, operator, ref_column),
+    rightJoin(table, column, operator, ref_column),
     crossJoin(table, column, operator, ref_column)
-- 01:31:10 Query Builder Ordering = orderBy(column, order)'
-- Query Builder Paging = take(number), skip(number)
+- 01:31:10 Query Builder Ordering =
+    orderBy(column, order)
+- 01:34:10 Query Builder Paging =
+    take(number),
+    skip(number)
 - Chunk Results = chunk()
 - Lazy Result = lazy().
 - Cursor = cursor().

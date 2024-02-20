@@ -118,7 +118,7 @@ class QueryBuilderTest2 extends TestCase
         $kolek = DB::table('categories')
             ->whereBetween('created_at', ['2024-02-20 00:00:01', '2024-02-20 00:00:10'])
             ->get();
-        
+
         self::assertCount(5, $kolek);
 
         $kolek->each(function($item) {
@@ -270,7 +270,7 @@ class QueryBuilderTest2 extends TestCase
     public function testInsertProducts()
     {
         $this->testInsertCategories();
-        
+
         DB::table('products')
             ->insert([
                 "id" => "1",
@@ -310,4 +310,21 @@ class QueryBuilderTest2 extends TestCase
             Log::info(json_encode($item));
         });
     }
+
+    public function testOrdering()
+    {
+        $this->testInsertProducts();
+
+        $kolek = DB::table("products")
+            ->orderBy("id", "asc")
+            ->orderBy("name", "desc")
+            ->get();
+
+        self::assertCount(3, $kolek);
+        $kolek->each(function($item) {
+            Log::info(json_encode($item));
+        });
+    }
+
+
 }
