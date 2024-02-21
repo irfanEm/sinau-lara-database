@@ -13,15 +13,35 @@ class CategorySeeder extends Seeder
      */
     public function run(): void
     {
-        DB::table('categories')->
-            insert(['id' => 'CIKI', 'name' => 'Ciki', 'created_at'=>'2024-02-16 10:26:40']);
-        DB::table('categories')->
-            insert(['id' => 'GORENG', 'name' => 'GORENGAN', 'created_at'=>'2024-02-16 10:26:41']);
-        DB::table('categories')->
-            insert(['id' => 'ES', 'name' => 'Es', 'created_at'=>'2024-02-16 10:26:42']);
-        DB::table('categories')->
-            insert(['id' => 'BAKAR', 'name' => 'Bakaran', 'created_at'=>'2024-02-16 10:26:43']);
-        DB::table('categories')->
-            insert(['id' => 'BASAH', 'name' => 'Basahan', 'created_at'=>'2024-02-16 10:26:44']);
+        DB::table('categories')->insert([
+            'id' => 'GORENG',
+            'name' => 'GORENGAN',
+            'description' => 'Aneka Gorengan',
+            'created_at' => '2024-02-20 00:00:01'
+        ]);
+        DB::table('categories')->insert([
+            'id' => 'CIKI',
+            'name' => 'PERCIKIAN',
+            'description' => 'Percikian Duniawi',
+            'created_at' => '2024-02-20 00:00:02'
+        ]);
+        DB::table('categories')->insert([
+            'id' => 'BAKAR',
+            'name' => 'BAKARAN',
+            'description' => 'Perbakaran Duniawi',
+            'created_at' => '2024-02-20 00:00:03'
+        ]);
+        DB::table('categories')->insert([
+            'id' => 'TITIP',
+            'name' => 'Pertitipan Duniawi',
+            'description' => 'Aneka Gorengan',
+            'created_at' => '2024-02-20 00:00:04'
+        ]);
+        DB::table('categories')->insert([
+            'id' => 'GODOG',
+            'name' => 'PERGODOGAN',
+            'description' => 'Pergodogan Duniawi',
+            'created_at' => '2024-02-20 00:00:05'
+        ]);
     }
 }

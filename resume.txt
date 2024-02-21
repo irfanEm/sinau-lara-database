@@ -75,15 +75,39 @@ Query Builder =
     lazy().
 - 01:49:35 Cursor =
     cursor().
-- Query Builder Aggregates = count(column) , min(column), max(column), avg(column), sum(column).
-- Query Builder Raw = raw()
-- Query Builder Grouping = groupBy().
-- Having = having().
-- Query Builder Locking = lockForUpdate().
-- Pagination = paginate(), total(), currentPage(), lastPage(), perPage().
-- Iterasi Per Page =
-- Cursor Pagination = cursorePaginate().
-- Database Migration = buat database migration, php artisan make:migration, php artisan migrate:status, php artisan migrate, tipe data di migration,
-- Edit table yang sudah di migrate dimigration.
-- Rollback Database Migration = php artisan migrate:rollback --step=jumlah.
-- Database Seeding = php artisan make:seeder NamaSeeder, php artisan db:seed --class=ClassSeeder, Memanggil seeder dari unit test
+- 01:52:45 Query Builder Aggregates = 
+    count(column) = menghitung jumlah data , 
+    min(column) = minimal data, 
+    max(column) = maximal data, 
+    avg(column) = rata rata data, 
+    sum(column) = menjumlahkan data.
+- 01:55:55 Query Builder Raw =
+    raw()
+- 01:59:30 Query Builder Grouping = 
+    groupBy().
+- 02:03:55 Having = 
+    having().
+- 02:06:00 Query Builder Locking = 
+    lockForUpdate().
+- 02:08:10 Pagination = 
+    paginate(), 
+    total(), 
+    currentPage(), 
+    lastPage(), 
+    perPage().
+- 02:14:20 Iterasi Per Page
+- 02:17:10 Cursor Pagination = 
+    cursorePaginate().
+- 02:26:20 Database Migration = 
+    buat database migration, 
+    php artisan make:migration, 
+    php artisan migrate:status, 
+    php artisan migrate, 
+    tipe data di migration,
+    edit table yang sudah di migrate dimigration.
+- 02:45:10 Rollback Database Migration = 
+    php artisan migrate:rollback --step=jumlah.
+- 02:48:25 Database Seeding = 
+    php artisan make:seeder NamaSeeder, 
+    php artisan db:seed --class=ClassSeeder, 
+    Memanggil seeder dari unit test contoh = $this->seed(CategoryClass)

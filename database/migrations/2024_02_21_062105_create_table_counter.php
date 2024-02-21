@@ -9,19 +9,11 @@ return new class extends Migration
     /**
      * Run the migrations.
      */
-    // public function up(): void
-    // {
-    //     Schema::create('table_counter', function (Blueprint $table) {
-    //         $table->id();
-    //         $table->timestamps();
-    //     });
-    // }
-
     public function up(): void
     {
-        Schema::create('counters', function(Blueprint $table) {
-            $table->string('id', 100)->nullable(false)->primary();
-            $table->integer('counter')->nullable(false)->default(0);
+        Schema::create('counters', function (Blueprint $table) {
+            $table->string("id", 100)->nullable(false)->primary();
+            $table->integer("counter")->nullable(false)->default(0);
         });
     }
 
